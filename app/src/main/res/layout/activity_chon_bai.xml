@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:padding="10dp"
+    tools:context=".ChonBaiActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bai1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="#F3EF1C"
+        android:text="bai1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bai2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="#2DE8BC"
+        android:text="bai2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bai3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="#1E9FF106"
+        android:text="bai3" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bai4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="#F47878"
+        android:text="bai4" />
+</LinearLayout>
