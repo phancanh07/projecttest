@@ -17,39 +17,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentViewModel extends AndroidViewModel {
-    private MutableLiveData<List<SinhVien>> mutableLiveData;
-    private SinhVienDatabase sinhVienDatabas;
-    List<SinhVien> list;
-
-    public StudentViewModel(Application application) {
+    public StudentViewModel(@NonNull Application application) {
         super(application);
-        mutableLiveData = new MutableLiveData<>();
-        sinhVienDatabas = SinhVienDatabase.getInstance(application);
-        mutableLiveData.setValue(sinhVienDatabas.sinhVienDAO().getAllstudent());
     }
-
-    public MutableLiveData<List<SinhVien>> getMutableLiveData() {
-        return mutableLiveData;
-    }
-
-    public void addUser(SinhVien sinhVien) {
-        sinhVienDatabas.sinhVienDAO().insertStudent(sinhVien);
-        mutableLiveData.setValue(sinhVienDatabas.sinhVienDAO().getAllstudent());
-    }
-
-    public void deleteAll() {
-        sinhVienDatabas.sinhVienDAO().deleteAll();
-        mutableLiveData.setValue(sinhVienDatabas.sinhVienDAO().getAllstudent());
-    }
-
-    public void delteItem(SinhVien sinhVien) {
-        sinhVienDatabas.sinhVienDAO().deleteItem(sinhVien);
-        mutableLiveData.setValue(sinhVienDatabas.sinhVienDAO().getAllstudent());
-    }
-
-
-    public void updateSV(SinhVien sinhVien) {
-        sinhVienDatabas.sinhVienDAO().Update(sinhVien);
-        mutableLiveData.setValue(sinhVienDatabas.sinhVienDAO().getAllstudent());
-    }
+//    private MutableLiveData<List<SinhVien>> mutableLiveData;
+//    private SinhVienDatabase sinhVienDatabas;
+//    List<SinhVien> list;
+//
+//    public StudentViewModel(Application application) {
+//        super(application);
+//        mutableLiveData = new MutableLiveData<>();
+//        sinhVienDatabas = SinhVienDatabase.getInstance(application);
+//        mutableLiveData.setValue(sinhVienDatabas.sinhVienDAO().getAllstudent());
+//    }
+//
+//    public MutableLiveData<List<SinhVien>> getMutableLiveData() {
+//        return mutableLiveData;
+//    }
+//
+//    public void addUser(SinhVien sinhVien) {
+//        sinhVienDatabas.sinhVienDAO().insertStudent(sinhVien);
+//        mutableLiveData.setValue(sinhVienDatabas.sinhVienDAO().getAllstudent());
+//    }
+//
+//    public void deleteAll() {
+//        sinhVienDatabas.sinhVienDAO().deleteAll();
+//        mutableLiveData.setValue(sinhVienDatabas.sinhVienDAO().getAllstudent());
+//    }
+//
+//    public void delteItem(SinhVien sinhVien) {
+//        sinhVienDatabas.sinhVienDAO().deleteItem(sinhVien);
+//        mutableLiveData.setValue(sinhVienDatabas.sinhVienDAO().getAllstudent());
+//    }
+//
+//
+//    public void updateSV(SinhVien sinhVien) {
+//        sinhVienDatabas.sinhVienDAO().Update(sinhVien);
+//        mutableLiveData.setValue(sinhVienDatabas.sinhVienDAO().getAllstudent());
+//    }
 }

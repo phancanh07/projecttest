@@ -2,15 +2,12 @@ package com.example.projecttest.room.service;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
 import com.example.projecttest.BR;
 
-@Entity(tableName = "SinhVien")
+
 public class SinhVien extends BaseObservable {
-    @PrimaryKey(autoGenerate = true)
-    private int Id;
+
     private String name;
     private int age;
     private String school;
@@ -18,22 +15,13 @@ public class SinhVien extends BaseObservable {
     public SinhVien() {
     }
 
-    public SinhVien(int id, String name, int age, String school) {
-        Id = id;
+    public SinhVien( String name, int age, String school) {
+
         this.name = name;
         this.age = age;
         this.school = school;
     }
 
-    @Bindable
-    public int getId() {
-        return Id;
-    }
-
-    @Bindable
-    public void setId(int id) {
-        Id = id;
-    }
 
     @Bindable
     public String getName() {

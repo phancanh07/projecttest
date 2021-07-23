@@ -3,9 +3,11 @@ package com.example.projecttest.model;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
+
 import java.util.List;
 
-import com.example.projecttest.BR;
+
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -42,7 +44,7 @@ public class Result extends BaseObservable {
     @Bindable
     public void setId(String id) {
         this.id = id;
-        notifyPropertyChanged(BR.id);
+
     }
 
     @Bindable
@@ -53,7 +55,7 @@ public class Result extends BaseObservable {
     @Bindable
     public void setImage(Image image) {
         this.image = image;
-        notifyPropertyChanged(BR.image);
+
     }
 
     @Bindable
@@ -64,7 +66,7 @@ public class Result extends BaseObservable {
     @Bindable
     public void setPrincipals(List<Principal> principals) {
         this.principals = principals;
-        notifyPropertyChanged(BR.principals);
+
     }
 
     @Bindable
@@ -75,7 +77,7 @@ public class Result extends BaseObservable {
     @Bindable
     public void setRunningTimeInMinutes(Integer runningTimeInMinutes) {
         this.runningTimeInMinutes = runningTimeInMinutes;
-        notifyPropertyChanged(BR.runningTimeInMinutes);
+
     }
 
     public String getTitle() {

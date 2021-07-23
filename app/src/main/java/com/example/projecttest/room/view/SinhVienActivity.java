@@ -37,68 +37,28 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SinhVienActivity extends AppCompatActivity implements ClickItemStudent, View.OnClickListener {
-    private StudentViewModel sinhVienModelView;
-    private SinhVienAdapter sinhVienAdapter;
+public class SinhVienActivity extends AppCompatActivity implements View.OnClickListener {
     private ActivitySinhVienBinding binding;
-    private Gson gson;
+    StudentModel studentModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sinh_vien);
-        sinhVienModelView = ViewModelProviders.of(this).get(StudentViewModel.class);
-        sinhVienAdapter = new SinhVienAdapter();
-        sinhVienModelView.getMutableLiveData().observe(this, new Observer<List<SinhVien>>() {
-            @Override
-            public void onChanged(List<SinhVien> sinhViens) {
-                sinhVienAdapter.setList(sinhViens);
-                LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false);
-                binding.rvStudent.setLayoutManager(manager);
-                binding.rvStudent.setHasFixedSize(false);
-                binding.rvStudent.setAdapter(sinhVienAdapter);
-
-            }
-        });
+        studentModel = ViewModelProviders.of(this).get(StudentModel.class);
         binding.btnAdd.setOnClickListener(this::onClick);
-        sinhVienAdapter.setClickItemStudent(this::clickItem);
-        binding.btnDeleteall.setOnClickListener(this::onClick);
-
-
-    }
-
-    @Override
-    public void clickItem(SinhVien sinhVien) {
-        sinhVien.setSchool(binding.school.getText().toString());
-        sinhVien.setName(binding.tensinhvien.getText().toString());
-        sinhVien.setAge(Integer.parseInt(binding.age.getText().toString()));
-        sinhVienModelView.updateSV(sinhVien);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_add:
-                addSv();
-                break;
-            case R.id.btn_deleteall:
-                delete();
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void delete() {
-        sinhVienModelView.deleteAll();
-    }
-
-    private void addSv() {
         SinhVien sinhVien = new SinhVien();
         sinhVien.setSchool(binding.school.getText().toString());
         sinhVien.setName(binding.tensinhvien.getText().toString());
         sinhVien.setAge(Integer.parseInt(binding.age.getText().toString()));
-        sinhVienModelView.addUser(sinhVien);
+        binding.setSinhVien(sinhVien);
+        studentModel.addList(sinhVien);
     }
+
 
 }

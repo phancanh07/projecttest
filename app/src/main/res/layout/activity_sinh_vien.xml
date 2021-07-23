@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="SinhVien"
             type="com.example.projecttest.room.service.SinhVien" />
@@ -21,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:text="@={SinhVien.school}" />
+            android:text="@{SinhVien.school}" />
 
         <EditText
             android:id="@+id/age"
@@ -51,18 +52,12 @@
                 android:layout_margin="10dp"
                 android:text="Add Student" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_deleteall"
-                android:layout_width="130dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:text="Delete All" />
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_student"
+        <fragment
+            android:id="@+id/layout"
+            android:name="com.example.projecttest.room.view.ListFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 </layout>

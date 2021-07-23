@@ -2,13 +2,27 @@ package com.example.projecttest.room.view;
 
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.projecttest.R;
+import com.example.projecttest.adapter.SinhVienAdapter;
+import com.example.projecttest.databinding.FragmentListBinding;
+import com.example.projecttest.modelView.BookModelView;
+import com.example.projecttest.modelView.StudentViewModel;
+import com.example.projecttest.room.service.SinhVien;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,20 +39,10 @@ public class ListFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private StudentViewModel studentViewModel;
+    private SinhVienAdapter sinhVienAdapter;
+    private StudentModel model;
 
-    public ListFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ListFragment newInstance(String param1, String param2) {
         ListFragment fragment = new ListFragment();
         Bundle args = new Bundle();
@@ -60,7 +64,21 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        FragmentListBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list, container, false);
+        View view = binding.getRoot();
+        sinhVienAdapter = new SinhVienAdapter();
+        model = ViewModelProviders.of(requireActivity()).get(StudentModel.class);
+        LinearLayoutManager manager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        model.getMutableLiveData().observe(requireActivity(), new Observer<List<SinhVien>>() {
+            @Override
+            public void onChanged(List<SinhVien> sinhViens) {
+                sinhVienAdapter.setList(sinhViens);
+                binding.rvStudent.setLayoutManager(manager);
+                binding.rvStudent.setHasFixedSize(false);
+                binding.rvStudent.setAdapter(sinhVienAdapter);
+            }
+        });
+
+        return view;
     }
 }

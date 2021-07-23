@@ -24,18 +24,21 @@ import retrofit2.Response;
 public class MovieActivity extends AppCompatActivity {
     ActivityMovieBinding movieBinding;
     MovieAdapter movieAdapter;
+    LinearLayoutManager manager;
+    Movie movie;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         movieBinding = DataBindingUtil.setContentView(this, R.layout.activity_movie);
         movieAdapter = new MovieAdapter(this);
-        LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false);
+        manager = new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false);
         movieBinding.rvMovie.setLayoutManager(manager);
         movieBinding.rvMovie.setHasFixedSize(false);
+        movie = BookRetrofit.getClient().create(Movie.class);
         movieBinding.btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Movie movie = BookRetrofit.getClient().create(Movie.class);
                 movie.getMovie(movieBinding.txtMovie.getText().toString()).enqueue(new Callback<Example>() {
                     @Override
                     public void onResponse(Call<Example> call, Response<Example> response) {

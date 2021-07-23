@@ -12,15 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Projecttest">
         <activity android:name=".MovieActivity">
+
+        </activity>
+        <activity android:name=".room.view.SinhVienActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".room.view.SinhVienActivity">
-        </activity>
         <activity android:name=".BookActivity"></activity>
-        <activity android:name=".mvvm.ChatActivity" />
+        <activity android:name=".mvvm.ChatActivity" >
+
+        </activity>
         <activity android:name=".bai2.Bai2Activity" />
         <activity android:name=".ChonBaiActivity" />
         <activity android:name=".bai1.Bai3Activity" />
